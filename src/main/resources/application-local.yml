@@ -1,0 +1,20 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: SKILL-SERVICE
+  config:
+    import: optional:configserver:http://${CNF}:9296/
+  data:
+    mongodb:
+      uri: mongodb://${IPDB}:27017/onboardstore
+      database : onboardstore
+      ssl:
+        enabled: false
+        invalidHostNameAllowed: true
+        trust-store: /rds-truststore.jks
+        trust-store-password: mnbvcxz
+
+logging:
+  file.name: /tmp/certs/logger/skill-service-app.log
