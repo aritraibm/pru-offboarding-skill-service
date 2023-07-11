@@ -1,55 +1,20 @@
 server:
   port: 9091
 
-
 spring:
   application:
     name: SKILL-SERVICE
   config:
-        activate:
-            on-profile: dev
-        import: optional:configserver:http://localhost:9296/
+    import: optional:configserver:http://localhost:9296/
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: mydb
-
-management:
-  endpoint:
-    restart:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-#  zipkin:
-#    base-url: http://127.0.0.1:9411/
+      uri: mongodb://mongoonbrd:mongoonbrd@docdb-2023-03-23-15-29-47.cluster-c9bnvhq6g6em.ap-south-1.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
+      database : test
+      ssl:
+        enabled: true
+        invalidHostNameAllowed: true
+        trust-store: /rds-truststore.jks
+        trust-store-password: mnbvcxz
     
 logging:
-  file.name: C:/Users/002TCO744/Desktop/elk-logs/skill-service.log
-  
-#eureka:
-#  instance:
-#    hostname: ${vcap.application.uris[0]:10.5.0.5}
-#    prefer-ip-address: true
-#    lease-renewal-interval-in-seconds: 10
-#    lease-expiration-duration-in-seconds: 20
-#  client:
-#    serviceUrl:
-#      defaultZone: http://10.5.0.5:8761/eureka
-
-#department:
-#  service:
-#    url: http://DEPARTMENT-SERVICE
-
-#eureka:
-#  client:
-#    register-with-eureka: true
-#    fetch-registry: true
-#    service-url: 
-#      defaultZone: http://localhost:8761/eureka/
-#  instance:
-#    hostname: localhost
-   
-  
+  file.name: /tmp/certs/logger/skill-service-app.log
