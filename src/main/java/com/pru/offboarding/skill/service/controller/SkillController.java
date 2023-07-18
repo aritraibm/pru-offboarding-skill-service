@@ -30,8 +30,7 @@ public class SkillController {
 	
 	@PreAuthorize("hasAnyRole({'ROLE_ASSOCIATE','ROLE_ONBOARDING_REVIEWER','ROLE_ONBOARDING_MANAGER'})")
 	@GetMapping(value = "/get-skill-master")
-	public List<Skill> saveUser() {
-		
+	public List<Skill> getSkillMaster() {
 		return skillService.getSkillMaster();
 	}
 
