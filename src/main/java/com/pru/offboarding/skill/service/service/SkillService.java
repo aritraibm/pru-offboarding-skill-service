@@ -8,5 +8,7 @@ public interface SkillService {
 
 	List<Skill> getSkillMaster();
 
+	Skill saveSkill(Skill skillData);
+
 
 }
